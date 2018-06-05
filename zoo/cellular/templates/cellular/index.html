@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Main page</title>
+</head>
+<body>
+	{% if barzel_list %}
+		<h1>All Barzels</h1>
+		<ul>
+			{% for barzel in barzel_list %}
+				<li>{{ barzel.imei }}</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<h1>No barzels</h1>
+	{% endif %}
+
+	<h1>Add new Barzels</h1>
+	<form action="" method="post">
+		{% csrf_token %}
+		<input type="text" name="imei" placeholder="IMEI"/>
+		<select name="btype">
+			{% for btype in btype_list %}
+				<option>{{ btype.name }}</option>
+			{% endfor %}
+		</select>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>
